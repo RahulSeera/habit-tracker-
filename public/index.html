@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f172a">
+  <title>Level-Up Challenge</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><path d='M28 54l14 14 30-34' stroke='white' stroke-width='11' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div id="login" class="login" hidden>
+    <form id="login-form" class="card login-card">
+      <h1>Level-Up Challenge</h1>
+      <p class="muted">Enter your password to continue.</p>
+      <input type="password" name="password" placeholder="Password" autocomplete="current-password" required autofocus>
+      <button class="btn primary" type="submit">Unlock</button>
+      <p id="login-error" class="error" hidden></p>
+    </form>
+  </div>
+
+  <div id="app" hidden>
+    <header id="header" class="header"></header>
+    <main id="view" class="view"></main>
+    <nav class="tabs" id="tabs">
+      <button data-tab="today" class="active"><span class="ico">&#9711;</span>Today</button>
+      <button data-tab="goals"><span class="ico">&#9678;</span>Goals</button>
+      <button data-tab="calendar"><span class="ico">&#9638;</span>Calendar</button>
+      <button data-tab="setup"><span class="ico">&#9881;</span>Setup</button>
+    </nav>
+  </div>
+
+  <dialog id="goal-dialog">
+    <form id="goal-form" method="dialog" class="goal-form">
+      <h2 id="goal-dialog-title">New goal</h2>
+      <label>Title<input name="title" required placeholder="e.g. Reach 15% body fat"></label>
+      <div class="row2">
+        <label>Horizon
+          <select name="horizon"><option value="short">Short-term (≤30 days)</option><option value="mid">Mid-term (≤90 days)</option><option value="long">Long-term</option></select>
+        </label>
+        <label>Category
+          <select name="category">
+            <option value="fitness">Fitness</option><option value="gate">GATE</option>
+            <option value="dsa">DSA</option><option value="career">Career</option>
+            <option value="habit">Habit</option><option value="academics">Academics</option>
+            <option value="other">Other</option>
+          </select>
+        </label>
+      </div>
+      <label>Type
+        <select name="kind">
+          <option value="checklist">Checklist (syllabus, milestones)</option>
+          <option value="number">Number (body fat %, problems solved)</option>
+          <option value="binary">Done / not done</option>
+        </select>
+      </label>
+      <div class="row3 number-only">
+        <label>Start value<input name="start_value" type="number" step="any"></label>
+        <label>Target<input name="target_value" type="number" step="any"></label>
+        <label>Unit<input name="unit" placeholder="%, kg, problems"></label>
+      </div>
+      <label class="number-only">Count automatically from
+        <select name="auto"></select>
+      </label>
+      <div class="row3">
+        <label>Start date<input name="start_date" type="date" required></label>
+        <label>Days<input name="days" type="number" min="1"></label>
+        <label>End date<input name="end_date" type="date" required></label>
+      </div>
+      <label>Why this matters <input name="why" placeholder="Optional reminder to yourself"></label>
+      <div class="dialog-actions">
+        <button type="button" class="btn" value="cancel" id="goal-cancel">Cancel</button>
+        <button type="submit" class="btn primary" value="save">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" hidden></div>
+  <script src="/app.js"></script>
+</body>
+</html>
