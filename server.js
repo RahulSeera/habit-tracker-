@@ -250,7 +250,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
 
 init()
-  .then(() => app.listen(PORT, () => console.log(`Challenge tracker on http://localhost:${PORT}`)))
+  .then(() => app.listen(PORT, '0.0.0.0', () => console.log(`Challenge tracker on http://0.0.0.0:${PORT}`)))
   .catch((e) => {
     console.error('Database init failed:', e);
     process.exit(1);
